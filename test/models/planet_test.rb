@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SiteControllerControllerTest < ActionDispatch::IntegrationTest
+class PlanetTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

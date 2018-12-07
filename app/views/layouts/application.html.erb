@@ -10,6 +10,44 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="<%= site_hello_url %>">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= planets_path %>">Planets</a>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Expeditions
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="<%= expeditions_path %>">List</a>
+                <a class="dropdown-item" href="#">Spaceships</a>
+                <a class="dropdown-item" href="#">Teams</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  
+    <% flash.each do |key, value| %>
+      <% alert_class = case key
+                       when :notice then "success"
+                       when :alert then "danger"
+                       else key
+                       end %>
+      <%= content_tag :div, class: "alert alert-#{alert_class}" do %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= value %>
+    <% end %>
+  <% end %>
+
     <%= yield %>
+    
   </body>
 </html>

@@ -6,9 +6,12 @@ class ExpeditionsController < ApplicationController
   end
 
   def new
+    @expedition = Expedition.new
   end
 
   def create
+    flash[:notice] = "Expedition successfully created"
+    render plain: params.inspect
   end
 
   def edit

@@ -1,0 +1,29 @@
+<!-- / %h1.greeting
+/   = greeting @name
+/   %span --------
+
+/ = render "shared/time"
+
+/ = link_to('Планеты', planets_path, class: 'btn btn-info', target: '_blank') -->
+
+ 
+
+
+<p>
+  <strong>Title:</strong>
+  <%= @planet.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @planet.description %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @planet.distance %>
+</p>
+
+<%= link_to 'Edit', edit_planet_path(@planet) %> |
+<%= link_to 'Back', planets_path %>
+
