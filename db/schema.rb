@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_07_062640) do
+ActiveRecord::Schema.define(version: 2018_12_15_053307) do
 
   create_table "expeditions", force: :cascade do |t|
     t.string "title"
@@ -19,12 +19,41 @@ ActiveRecord::Schema.define(version: 2018_12_07_062640) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "itineraries", force: :cascade do |t|
+    t.integer "distance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "expedition_id"
+    t.index ["expedition_id"], name: "index_itineraries_on_expedition_id"
+  end
+
+  create_table "itinerary_entries", force: :cascade do |t|
+    t.integer "weight", default: 1, null: false
+    t.integer "itinerary_id"
+    t.integer "planet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["itinerary_id", "weight"], name: "index_itinerary_entries_on_itinerary_id_and_weight", unique: true
+    t.index ["itinerary_id"], name: "index_itinerary_entries_on_itinerary_id"
+    t.index ["planet_id"], name: "index_itinerary_entries_on_planet_id"
+  end
+
   create_table "planets", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.integer "distance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "access", default: true
+  end
+
+  create_table "spaceships", force: :cascade do |t|
+    t.string "title"
+    t.float "velocity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "expedition_id"
+    t.index ["expedition_id"], name: "index_spaceships_on_expedition_id"
   end
 
 end

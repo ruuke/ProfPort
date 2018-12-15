@@ -9,6 +9,18 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+# default: &default
+#   adapter: postgresql
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
+#   username: 
+#   password:
+
+# development:
+#   <<: *default
+#   database: profport_expedition_dev
+
+
 development:
   <<: *default
   database: db/development.sqlite3
