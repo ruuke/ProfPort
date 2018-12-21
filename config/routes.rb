@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :expeditions
+  resources :expeditions do
+  	resources :spaceships, shallow: true
+  end 	
 
   
   resources :planets do

@@ -1,0 +1,9 @@
+<tr>
+  <td><%= spaceship.title %></td>
+  <td><%= link_to 'Show', spaceship_path(spaceship) %></td>
+  <td><%= link_to 'Edit', edit_spaceship_path(spaceship) %></td>
+  <td><%= link_to 'Delete', spaceship_path(spaceship) ,
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>
