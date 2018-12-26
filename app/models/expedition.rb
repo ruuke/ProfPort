@@ -4,14 +4,10 @@ class Expedition < ApplicationRecord
 
   validates :title, presence:true, uniqueness: true
 
-  before_save :change_title
-  after_save :create_new_itinerary
+  
+  # after_initialize :create_new_itinerary
 
   private
-
-  def change_title
-    self.title = "Ex: #{self.title.downcase}"
-  end
 
   def create_new_itinerary
   	create_itinerary
