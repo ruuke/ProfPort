@@ -5,7 +5,7 @@ class Expedition < ApplicationRecord
   validates :title, presence:true, uniqueness: true
 
   
-  # after_initialize :create_new_itinerary
+  after_save :create_new_itinerary
 
   private
 

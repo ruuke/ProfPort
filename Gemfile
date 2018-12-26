@@ -6,8 +6,8 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-# gem 'pg'
+
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -24,8 +24,18 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-gem 'bootstrap'
+gem "devise"
+gem "devise-bootstrap-views"
+gem "pundit"
 
+# Use Capistrano for deployment
+# gem "capistrano-rails", group: :development
+
+gem 'carrierwave'
+gem 'mini_magick'
+
+gem 'bootstrap'
+gem 'haml'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'jquery-rails'
@@ -45,6 +55,8 @@ gem 'mini_racer', '~> 0.1.14'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem "factory_bot_rails"
+  gem "ffaker"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
