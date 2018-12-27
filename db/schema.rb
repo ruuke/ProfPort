@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_15_053307) do
+ActiveRecord::Schema.define(version: 2018_12_22_112027) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "expeditions", force: :cascade do |t|
     t.string "title"
@@ -19,18 +22,24 @@ ActiveRecord::Schema.define(version: 2018_12_15_053307) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "galaxies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+  end
+
   create_table "itineraries", force: :cascade do |t|
     t.integer "distance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "expedition_id"
+    t.bigint "expedition_id"
     t.index ["expedition_id"], name: "index_itineraries_on_expedition_id"
   end
 
   create_table "itinerary_entries", force: :cascade do |t|
     t.integer "weight", default: 1, null: false
-    t.integer "itinerary_id"
-    t.integer "planet_id"
+    t.bigint "itinerary_id"
+    t.bigint "planet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["itinerary_id", "weight"], name: "index_itinerary_entries_on_itinerary_id_and_weight", unique: true
@@ -52,8 +61,11 @@ ActiveRecord::Schema.define(version: 2018_12_15_053307) do
     t.float "velocity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "expedition_id"
+    t.bigint "expedition_id"
     t.index ["expedition_id"], name: "index_spaceships_on_expedition_id"
   end
 
+  add_foreign_key "itineraries", "expeditions"
+  add_foreign_key "itinerary_entries", "itineraries"
+  add_foreign_key "itinerary_entries", "planets"
 end

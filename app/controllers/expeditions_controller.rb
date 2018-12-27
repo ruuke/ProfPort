@@ -7,6 +7,7 @@ class ExpeditionsController < ApplicationController
   end
 
   def show
+    @spaceship = Spaceship.new
   end
   
   def new

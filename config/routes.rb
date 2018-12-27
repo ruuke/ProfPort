@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  
   resources :expeditions do
   	resources :spaceships, shallow: true
-  end 	
+  end 
 
+  resources :galaxies	
   
   resources :planets do
     get 'logo', on: :collection
@@ -17,6 +19,6 @@ Rails.application.routes.draw do
 
   get 'site/poem', to: 'site#poem'
 
-  root 'planets#logo'
+  root 'planets#index'
 
 end
