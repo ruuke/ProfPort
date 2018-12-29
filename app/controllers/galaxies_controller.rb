@@ -17,4 +17,7 @@ class GalaxiesController < ApplicationController
     end
   end
 
+  def galaxy_params
+    params.require(:galaxy).permit(:title)
+  end
 end

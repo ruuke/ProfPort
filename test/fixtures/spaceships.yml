@@ -1,9 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: MyString12
   velocity: 1.5
+  expedition_id: 1
 
 two:
-  title: MyString
+  title: MyStringq23
   velocity: 1.5

@@ -26,7 +26,7 @@ class SpaceshipsController < ApplicationController
 
   def update
     if @spaceship.update(spaceship_params)
-      redirect_to @spaceship_params
+      redirect_to @spaceship
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class SpaceshipsController < ApplicationController
 
   def destroy
     @spaceship.destroy
-    redirect_to @spaceship.expedition
+    redirect_to expeditions_url
   end
 
   private
@@ -48,7 +48,7 @@ class SpaceshipsController < ApplicationController
   end
 
   def spaceship_params
-    params.require(:spaceship).permit(:title, :velocity)
+    params.require(:spaceship).permit(:title, :velocity, :expedition_id)
   end
 
 end

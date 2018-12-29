@@ -1,11 +1,11 @@
 class Expedition < ApplicationRecord
   has_many :spaceships
-  has_one :itinerary
+  has_one :itinerary, foreign_key: :expedition_id, dependent: :destroy
 
-  validates :title, presence:true, uniqueness: true
+  validates :title, length: {in: 5..50}, presence:true, uniqueness: true
 
   
-  after_save :create_new_itinerary
+  after_save :create_new_itinerary, on: :create
 
   private
 

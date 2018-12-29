@@ -16,4 +16,14 @@ class ExpeditionTest < ActiveSupport::TestCase
     expedition = Expedition.new 
     assert_not expedition.save
   end
+
+  test 'title length should be 5..50' do
+    expedition = Expedition.create(title: 'abcdf')
+    assert expedition.save
+  end
+
+  test 'title length should not be less when 5..50' do
+    expedition = Expedition.create(title: 'abc')
+    assert_not expedition.save
+  end
 end
