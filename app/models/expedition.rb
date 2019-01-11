@@ -1,4 +1,5 @@
 class Expedition < ApplicationRecord
+  has_many :users
   has_many :spaceships
   has_one :itinerary, foreign_key: :expedition_id, dependent: :destroy
 
@@ -10,6 +11,6 @@ class Expedition < ApplicationRecord
   private
 
   def create_new_itinerary
-  	create_itinerary
+    create_itinerary
   end
 end

@@ -7,5 +7,5 @@ class GalaxiesCreateFlowsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_test 'mlechiy put'  
-   end
+  end
 end

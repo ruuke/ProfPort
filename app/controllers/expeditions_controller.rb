@@ -47,7 +47,7 @@ class ExpeditionsController < ApplicationController
 
   def find_expedition
     @expedition = Expedition.find(params[:id])
-    authorize @expedition
+    
   end
 
   def expedition_params

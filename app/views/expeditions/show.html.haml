@@ -23,6 +23,17 @@
       %table
         = render @expedition.spaceships
 
+#accordion
+  .card
+    #headingOne.card-header
+      %h5.mb-0
+        %button.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
+          Team
+    #collapseOne.collapse.show{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+      %table
+        = @expedition.users.pluck :email
+
 %br
 = link_to 'Edit', edit_expedition_path(@expedition) |
 = link_to 'Back', expeditions_path
