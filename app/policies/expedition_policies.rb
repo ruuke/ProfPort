@@ -1,4 +1,4 @@
-class ExpeditiomPolicy < ApplicationPolicy
+class ExpeditionPolicy < ApplicationPolicy
 
   def index?
     user.cosm? || user.comm?
