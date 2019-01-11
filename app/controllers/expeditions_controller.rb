@@ -3,6 +3,7 @@ class ExpeditionsController < ApplicationController
   before_action :find_expedition, only: %i[show edit update destroy]
 
   def index
+    authorize Expedition
     @expeditions = Expedition.all
   end
 
@@ -11,10 +12,12 @@ class ExpeditionsController < ApplicationController
   end
   
   def new
+    authorize Expedition
     @expedition = Expedition.new
   end
 
   def create
+    authorize Expedition
     @expedition = Expedition.new(expedition_params)
 
     if @expedition.save
@@ -44,6 +47,7 @@ class ExpeditionsController < ApplicationController
 
   def find_expedition
     @expedition = Expedition.find(params[:id])
+    authorize @expedition
   end
 
   def expedition_params

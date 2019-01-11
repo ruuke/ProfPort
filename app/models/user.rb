@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  enum role: %i[cosm comm]        
+
   def self.authenticate(params)
     user = User.find_by email: params[:email]
     if user.present? && user.password_valid?(params[:password])
