@@ -40,6 +40,9 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'mini_racer', '~> 0.1.14'
+
+gem 'fast_jsonapi'
+gem 'rack-attack'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

@@ -22,4 +22,10 @@ Rails.application.routes.draw do
 
   root 'planets#index'
 
+  scope module: "api" do
+    namespace "v1" do
+      resources :expeditions, only: %i[show index create]
+    end
+  end
+
 end
