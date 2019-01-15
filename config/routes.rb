@@ -26,6 +26,15 @@ Rails.application.routes.draw do
     namespace "v1" do
       resources :expeditions, only: %i[show index create]
     end
+    namespace "v1" do
+      resources :spaceships, only: %i[index show]
+    end
+    namespace "v2" do
+      resources :expeditions, only: %i[index show create update destroy]
+    end
+    namespace "v2" do
+      resources :spaceships, only: %i[index show]
+    end
   end
 
 end

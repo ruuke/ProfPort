@@ -4,5 +4,6 @@ module Api::V1
     def index
       render json: ::V1::ExpeditionSerializer.new(Expedition.all).serialized_json
     end
+    
   end
 end
