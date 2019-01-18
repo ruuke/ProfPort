@@ -1,11 +1,12 @@
 module Api
 
   class ApiController < ApplicationController
-    include ActionController::HttpAuthentication::Token::ControllerMethods
 
-    protect_from_forgery with: :null_session
+    protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format.json? }
     skip_before_action :authenticate_user!
-    # before_action :rest_auth
+    before_action :rest_auth
+    
+    include ActionController::HttpAuthentication::Token::ControllerMethods
 
     private
 

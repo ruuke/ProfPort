@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
 
   include Pundit
 
-  rescue_from Pundit::NotDefinedError do
-  	redirect_to root_path, alert: 'LOL'
+  rescue_from Pundit::NotAuthorizedError do
+  	redirect_to root_path, alert: 'Недостаточно прав!'
   end
 
   def after_sing_in_path_for

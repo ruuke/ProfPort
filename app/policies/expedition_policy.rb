@@ -4,11 +4,15 @@ class ExpeditionPolicy < ApplicationPolicy
     user.cosm? || user.comm?
   end
 
+  def show?
+    user.cosm? || user.comm?
+  end
+
   def create?
     user.comm?
   end
 
-  def edit
+  def edit?
     user.comm?
   end
 
@@ -16,8 +20,5 @@ class ExpeditionPolicy < ApplicationPolicy
     user.comm?
   end
 
-  def show
-    user.cosm? || user.comm?
-  end
 
 end

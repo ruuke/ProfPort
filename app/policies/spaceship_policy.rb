@@ -8,7 +8,7 @@ class SpaceshipPolicy < ApplicationPolicy
     user.comm?
   end
 
-  def edit
+  def edit?
     user.comm?
   end
 
@@ -20,7 +20,7 @@ class SpaceshipPolicy < ApplicationPolicy
     user.comm?
   end
 
-  def show
+  def show?
     user.cosm? || user.comm?
   end
 

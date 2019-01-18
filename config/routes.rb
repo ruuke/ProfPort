@@ -35,6 +35,11 @@ Rails.application.routes.draw do
     namespace "v2" do
       resources :spaceships, only: %i[index show]
     end
+    namespace "v2" do
+      post :gettoken, to: 'users#singin'
+    end
+
+
   end
 
 end

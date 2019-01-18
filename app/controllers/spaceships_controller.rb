@@ -8,10 +8,12 @@ class SpaceshipsController < ApplicationController
   end
   
   def new
+    authorize Spaceship
     @spaceship = @expedition.spaceships.new
   end
 
   def create
+    authorize Spaceship
     @spaceship = @expedition.spaceships.new(spaceship_params)
 
     if @spaceship.save
@@ -34,7 +36,7 @@ class SpaceshipsController < ApplicationController
 
   def destroy
     @spaceship.destroy
-    redirect_to expeditions_url
+    redirect_to @spaceship.expedition
   end
 
   private
@@ -45,6 +47,7 @@ class SpaceshipsController < ApplicationController
 
   def find_spaceship
     @spaceship = Spaceship.find(params[:id])
+    authorize @spaceship
   end
 
   def spaceship_params
