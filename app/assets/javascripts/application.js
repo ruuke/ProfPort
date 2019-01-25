@@ -18,3 +18,35 @@
 //= require jquery
 //= require popper
 //= require bootstrap-sprockets
+//= require slider.js
+
+$(function() {
+  const PREFIX = "/assets/slider/";
+  let slides = ['slide1.jpg', 'slide2.jpg', 'slide3.jpg', 'slide4.jpg'];
+  let currentSlide = 0;
+  let slideInterval = setInterval(moveRight, 2000);
+
+  $('#slide-right').on('click', moveRight);
+
+  function moveRight() {
+    move(currentSlide+1);
+  }
+
+  $('#slide-left').on('click', moveLeft);
+
+  function moveLeft() {
+    move(currentSlide-1);
+  }
+
+  function move(n) {
+    // event.preventDefault();
+    currentSlide = (n+slides.length) % slides.length;
+    $('#slide').attr('src', `${PREFIX}${slides[currentSlide]}`);
+  }
+
+  $('#slide').mouseenter(function() {
+        clearInterval(slideInterval);
+    }), mouseleave(function() {
+        let slideInterval = setInterval(moveRight, 2000);
+    });
+});
