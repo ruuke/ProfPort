@@ -20,5 +20,8 @@ class ExpeditionPolicy < ApplicationPolicy
     user.comm?
   end
 
+  def destroy?
+    user.comm?
+  end
 
 end

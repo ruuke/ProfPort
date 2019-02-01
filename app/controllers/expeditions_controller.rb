@@ -5,6 +5,10 @@ class ExpeditionsController < ApplicationController
   def index
     authorize Expedition
     @expeditions = Expedition.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @expeditions }
+    
   end
 
   def show
@@ -14,6 +18,10 @@ class ExpeditionsController < ApplicationController
   def new
     authorize Expedition
     @expedition = Expedition.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -21,7 +29,10 @@ class ExpeditionsController < ApplicationController
     @expedition = Expedition.new(expedition_params)
 
     if @expedition.save
-      redirect_to @expedition
+      respond_to do |format|
+        format.html { redirect_to expeditions_path }
+        format.js
+      end     
     else
       render :new
     end
@@ -40,7 +51,19 @@ class ExpeditionsController < ApplicationController
 
   def destroy
     @expedition.destroy
-    redirect_to expeditions_path
+    
+    respond_to do |format|
+      format.html do
+        if @expedition.destroyed?
+          flash[:notice] = 'Удаление прошло успешно'
+        else
+          flash[:alert] = 'Ошибка удаления'
+        end
+        redirect_to expeditions_path
+      end
+      format.js
+    end
+    end
   end
 
   private

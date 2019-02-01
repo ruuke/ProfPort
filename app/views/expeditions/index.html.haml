@@ -1,0 +1,34 @@
+page_title "Список экспедиций"
+
+- if policy(Expedition).new?
+  .float-right
+    = link_to 'Создать', new_expedition_path, data: { disable_with: "Please wait..." }, class: 'btn btn-info', remote: true
+%table.table.table-hover
+  %thead
+    %tr
+      %th Название
+      %th
+
+  %tbody
+    - @expeditions.reverse.each do |expedition|
+      %tr{id: "row-#{expedition.id}"}
+        %td= link_to expedition.title, expedition_path(expedition)
+        %td
+          = link_to 'Редактировать', edit_expedition_path(expedition), class: 'btn btn-warning'
+          |
+          = link_to 'Удалить', expedition_path(expedition), remote: true, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-danger'
+
+%button.btn.btn-primary{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+  Create new expedition
+/ Modal
+#exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title New expedition
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        = new_expedition_path
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
