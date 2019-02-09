@@ -1,6 +1,7 @@
 class ExpeditionsController < ApplicationController
 
   before_action :find_expedition, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!
 
   def index
     authorize Expedition

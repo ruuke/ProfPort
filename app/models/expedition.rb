@@ -13,4 +13,11 @@ class Expedition < ApplicationRecord
   def create_new_itinerary
     create_itinerary
   end
+
+  def notify
+    ActionCable.server.broadcast 
+      ExpeditionsChannel::TITLE, 
+        partial: ActionController::Base.renderer.render(partial: "expeditions/expedition", object: self)
+  end
+
 end

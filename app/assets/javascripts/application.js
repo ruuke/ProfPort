@@ -21,6 +21,7 @@
 // require slider.js
 //= require ajax
 //= require es6
+//= require cable
 
 // $(function() {
 //   const PREFIX = "/assets/slider/";

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   
   devise_for :users
+
   resources :expeditions do
+    get 'react', on: :collection
   	resources :spaceships, shallow: true
   end 
 
@@ -38,8 +40,6 @@ Rails.application.routes.draw do
     namespace "v2" do
       post :gettoken, to: 'users#singin'
     end
-
-
   end
 
 end
